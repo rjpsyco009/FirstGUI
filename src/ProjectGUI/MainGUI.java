@@ -1,5 +1,5 @@
 
-package Intermediate2Unit1;
+package ProjectGUI;
 
 import javax.swing.JOptionPane;
 
