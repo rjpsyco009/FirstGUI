@@ -1,6 +1,9 @@
 
 package ProjectGUI;
 
+import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 
 /**
@@ -355,23 +358,25 @@ public class MainGUI extends javax.swing.JFrame {
 
 //ID field validation
         String repID= idField.getText();
-//ignore any non-number input
+    //ignore any non-number input
         repID= repID.replaceAll("[^\\d.]", "");
         
-//validate user input
+    //validate user input
         if(repID.trim().length()==0){
                 idERROR.setVisible(true);
                 idERROR.setText("You must provide an ID as INTEGER.");
                 IDinfoProvided = false;
         }else{
+    //add to object
             s.setIdNumber(repID.trim());
+            
             idERROR.setVisible(false);
             IDinfoProvided=true;
              }
        
-//basic input - First Name Verification
+    //basic input - First Name Verification
         String firstName=firstNameField.getText();
-        //ignore any number input
+    //ignore any number input
         firstName = firstName.replaceAll("\\d","");
         
         if (firstName.trim().length()==0){
@@ -380,26 +385,26 @@ public class MainGUI extends javax.swing.JFrame {
             FNinfoProvided = false;
         }else{
             firstNameERROR.setVisible(false);
-//added to object
-            //s.setSalesRepFirstName(firstName.trim());
+    //added to object
+            s.setSalesRepFirstName(firstName.trim());
             
             FNinfoProvided = true;
         }        
         
 //basic input - Last Name verification
         String lastName=lastNameField.getText();
-//ignore any numbers input
+    //ignore any numbers input
         lastName= lastName.replaceAll("\\d","");
         
-        if (lastName.trim().length()==0 || lastName==firstName){
+        if (lastName.trim().length()==0 || lastName.equals(firstName)){
             lastNameERROR.setVisible(true);
             lastNameERROR.setText("You must provide a different last name! Numbers are ignored!");
             LNinfoProvided = false;
         }else {
             
             lastNameERROR.setVisible(false);
-//assigned to salesRep object
-            //s.setSalesRepLastName(lastName.trim());
+    //assigned to salesRep object
+            s.setSalesRepLastName(lastName.trim());
             LNinfoProvided = true;
         }
          
@@ -415,11 +420,14 @@ public class MainGUI extends javax.swing.JFrame {
         }else{
             officeSuppliesERROR.setVisible(false);
             OSinfoProvided=true;
+        //set to object
+        s.setOfficeSupplies(officeTotal.trim());
              }
-//Validate int datatype
+        //Validate int datatype
         try{
             double id = Double.parseDouble(officeTotal);
-        }catch(Exception e){
+            s.setOfficeSupplies(officeTotal.trim());
+        }catch(NumberFormatException e){
             officeSuppliesERROR.setVisible(true);
             officeSuppliesERROR.setText("Please provide the amount of OS sold in a decimal");
             OSinfoProvided = false;
@@ -427,69 +435,82 @@ public class MainGUI extends javax.swing.JFrame {
 //basic input - Books
     String booksTotal= booksTextField.getText();
 
-        if(officeTotal.trim().length()==0){
+        if(booksTotal.trim().length()==0){
                 booksERROR.setVisible(true);
                 booksERROR.setText("Please provide the amount of books sold in a decimal");
                 BinfoProvided = false;
         }else{
+            s.setBooks(booksTotal.trim());
             booksERROR.setVisible(false);
             BinfoProvided=true;
              }
-//Validate int datatype
+        //Validate int datatype
         try{
             double id = Double.parseDouble(booksTotal);
-        }catch(Exception e){
+            s.setBooks(booksTotal.trim());
+        }catch(NumberFormatException e){
             booksERROR.setVisible(true);
             booksERROR.setText("Please provide the amount of books sold in a decimal");
             BinfoProvided = false;
         }
 //basic input - Paper
     String paperTotal= paperTextField.getText();
-//validate input of data
-        if(officeTotal.trim().length()==0){
+        //validate input of data
+        if(paperTotal.trim().length()==0){
                 paperERROR.setVisible(true);
                 paperERROR.setText("Please provide the amount of paper sold in a decimal");
                 PinfoProvided = false;
         }else{
+            s.setPaper(paperTotal.trim());
             paperERROR.setVisible(false);
             PinfoProvided=true;
              }
             
         try{//Validate int datatype
             double id = Double.parseDouble(paperTotal);
-        }catch(Exception e){
+             s.setPaper(paperTotal.trim());
+        }catch(NumberFormatException e){
             paperERROR.setVisible(true);
             paperERROR.setText("Please provide the amount of paper sold in a decimal");
             PinfoProvided = false;
         }
         
+       
+        
 // ##############RADIO BUTTONS######################
     String districtSelect = new String();
      
         if (northRadioButton.isSelected())
-        {   districtSelect= "North";
+        {   districtSelect= "NORTH";
             districtSelect.toString();
             districtERROR.setVisible(false);
+            s.setDistrictSelect(districtSelect);
             DinfoProvided=true;
-        //if North is selected
+    //if North is selected
         }else if (eastRadioButton.isSelected()){
-            districtSelect= "East";
+            districtSelect= "EAST";
             districtSelect.toString();
+            s.setDistrictSelect(districtSelect);
             districtERROR.setVisible(false);
+            
             DinfoProvided=true;
-        //if South is selected
+    //if South is selected
         }else if(southRadioButton.isSelected()){
-            districtSelect= "South";
+            districtSelect= "SOUTH";
             districtSelect.toString();
+            s.setDistrictSelect(districtSelect);
             districtERROR.setVisible(false);
+            
             DinfoProvided=true;
-        //if west is selected
+    //if west is selected
         }else if(westRadioButton.isSelected()){
-            districtSelect= "West";
+            districtSelect= "WEST";
             districtSelect.toString();
+            s.setDistrictSelect(districtSelect);
             districtERROR.setVisible(false);
+            
             DinfoProvided=true;
-        //if no region is selected    
+    //if no region is selected    
         }else{   
         districtERROR.setVisible(true);
         districtERROR.setText("Please choose a district!");   
@@ -497,22 +518,25 @@ public class MainGUI extends javax.swing.JFrame {
         }
 //###################Contact Select#######################
         String contactSelect = new String();
-//if Phone is selected
+    //if Phone is selected
         if (phoneRadioButton.isSelected())
-        {   contactSelect= "give us a ring at ###-####-####";
+        {   contactSelect= "Phone";
             contactSelect.toString();
+            s.setContactSelect(contactSelect);
             contactERROR.setVisible(false);
             CinfoProvided=true;
 //if email is selected  
         }else if (emailRadioButton.isSelected()){
-            contactSelect= "Send us your email at contact@gui.com";
+            contactSelect= "Email";
             contactSelect.toString();
+            s.setContactSelect(contactSelect);
             contactERROR.setVisible(false);
             CinfoProvided=true;
 //if a Visit is chosen
         }else if(visitRadioButton.isSelected()){
-            contactSelect= "Let's meet for coffee!";
+            contactSelect= "Visit";
             contactSelect.toString();
+            s.setContactSelect(contactSelect);
             contactERROR.setVisible(false);
             CinfoProvided=true;
         
@@ -527,16 +551,23 @@ public class MainGUI extends javax.swing.JFrame {
             OSinfoProvided && BinfoProvided && PinfoProvided && 
             DinfoProvided && CinfoProvided)
         {
-        double totalItemsSold = Double.valueOf(officeTotal) + Double.valueOf(paperTotal) + Double.valueOf(booksTotal);        
-//output after user has provided all inputs
-        JOptionPane.showMessageDialog(this, 
-          "Your Rep info is ID: " 
-          + repID +", " 
-          + firstName+" "
-          + lastName+"."
-          +"\nYour Supplies Total is: " +totalItemsSold 
-          +"\nYour district is " + districtSelect
-          +"\nThanks! "+contactSelect);
+        
+            try {
+                salesRepFileWriter RFW = new salesRepFileWriter();
+                RFW.writeRep(s);
+                idField.setText("");
+                firstNameField.setText("");
+                lastNameField.setText("");
+                officeSuppliesTextField.setText("");
+                booksTextField.setText("");
+                paperTextField.setText("");
+                contactButtonGroup.clearSelection();
+                districtButtonGroup.clearSelection();
+                } catch (IOException ex){
+                    JOptionPane.showMessageDialog(this, "File Error");
+                    Logger.getLogger(MainGUI.class.getName()).log(Level.SEVERE, null, ex);
+            }
+         
         } 
     }//GEN-LAST:event_enterButtonActionPerformed
 
