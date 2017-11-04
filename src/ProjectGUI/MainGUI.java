@@ -1,10 +1,13 @@
 
 package ProjectGUI;
 
+
+import java.util.List;
 import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
+
 
 /**
  *Ryan Norton
@@ -28,6 +31,7 @@ public class MainGUI extends javax.swing.JFrame {
         paperERROR.setVisible(false);
         districtERROR.setVisible(false);
         contactERROR.setVisible(false);
+        enterConfirmLabel.setVisible(false);
     }
 
     /**
@@ -78,6 +82,10 @@ public class MainGUI extends javax.swing.JFrame {
         paperERROR = new javax.swing.JLabel();
         districtERROR = new javax.swing.JLabel();
         contactERROR = new javax.swing.JLabel();
+        enterConfirmLabel = new javax.swing.JLabel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        salesRepOutput = new javax.swing.JTextArea();
+        showButton = new javax.swing.JButton();
 
         jRadioButton1.setText("jRadioButton1");
 
@@ -175,6 +183,21 @@ public class MainGUI extends javax.swing.JFrame {
         contactERROR.setForeground(new java.awt.Color(255, 0, 0));
         contactERROR.setText("Please choose a contact method.");
 
+        enterConfirmLabel.setForeground(new java.awt.Color(0, 153, 51));
+        enterConfirmLabel.setText("Saved to File!");
+
+        salesRepOutput.setEditable(false);
+        salesRepOutput.setColumns(20);
+        salesRepOutput.setRows(5);
+        jScrollPane1.setViewportView(salesRepOutput);
+
+        showButton.setText("Show");
+        showButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                showButtonActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -234,25 +257,33 @@ public class MainGUI extends javax.swing.JFrame {
                                     .addGroup(layout.createSequentialGroup()
                                         .addComponent(southRadioButton)
                                         .addGap(18, 18, 18)
-                                        .addComponent(districtERROR))))))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(68, 68, 68)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(emailRadioButton)
-                                    .addComponent(visitRadioButton)
-                                    .addComponent(phoneRadioButton))
-                                .addGap(18, 18, 18)
-                                .addComponent(contactERROR))
-                            .addComponent(contactPreferenceLabel))))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                        .addComponent(districtERROR)))))))
+                .addContainerGap(225, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(exitButton)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(enterButton)
-                .addGap(213, 213, 213))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(enterConfirmLabel)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(enterButton)
+                        .addGap(65, 65, 65)
+                        .addComponent(showButton)))
+                .addGap(78, 78, 78))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(68, 68, 68)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(emailRadioButton)
+                            .addComponent(visitRadioButton)
+                            .addComponent(phoneRadioButton))
+                        .addGap(18, 18, 18)
+                        .addComponent(contactERROR))
+                    .addComponent(contactPreferenceLabel))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane1)
+                .addGap(36, 36, 36))
         );
 
         layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {firstNameField, idField, lastNameField});
@@ -315,22 +346,34 @@ public class MainGUI extends javax.swing.JFrame {
                         .addComponent(westRadioButton)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jSeparator3, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(contactPreferenceLabel)
-                .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(contactERROR)
                     .addGroup(layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(contactPreferenceLabel)
+                        .addGap(18, 18, 18)
                         .addComponent(phoneRadioButton)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(emailRadioButton)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(visitRadioButton)))
-                .addGap(21, 21, 21)
+                        .addComponent(visitRadioButton)
+                        .addGap(21, 21, 21))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(contactERROR)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)))
+                        .addComponent(enterConfirmLabel)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)))
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(exitButton)
-                    .addComponent(enterButton))
-                .addContainerGap())
+                    .addComponent(enterButton)
+                    .addComponent(showButton))
+                .addGap(43, 43, 43))
         );
 
         pack();
@@ -343,231 +386,266 @@ public class MainGUI extends javax.swing.JFrame {
     private void exitButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_exitButtonActionPerformed
         System.exit(0);
     }//GEN-LAST:event_exitButtonActionPerformed
+//SHOW button action
+    private void showButtonActionPerformed(java.awt.event.ActionEvent evt){
+        salesRepOutput.setText("");
+        salesRepFileReader filereader = new salesRepFileReader();
+        try
+        {
+            List<salesRep> reps = filereader.readSalesRep("Sales_Reps.txt");
+            for (salesRep s : reps)
+            {
+                salesRepOutput.append(s.toString());
+                salesRepOutput.append("\n");
+            }
+        } catch (IOException ex)
+        {
+            JOptionPane.showMessageDialog(this, "Error in opening File");
+            Logger.getLogger(MainGUI.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+    }
+
 //ENTER button actions
     private void enterButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_enterButtonActionPerformed
-        boolean IDinfoProvided;
-        boolean FNinfoProvided;
-        boolean LNinfoProvided;
-        boolean OSinfoProvided;
-        boolean BinfoProvided;
-        boolean PinfoProvided;
-        boolean DinfoProvided;
-        boolean CinfoProvided;
-        salesRep s = new salesRep();
-//##############Sales Rep######################
+            boolean IDinfoProvided;
+            boolean FNinfoProvided;
+            boolean LNinfoProvided;
+            boolean OSinfoProvided;
+            boolean BinfoProvided;
+            boolean PinfoProvided;
+            boolean DinfoProvided;
+            boolean CinfoProvided;
+            
+            salesRep s = new salesRep();
+    //##############Sales Rep######################
 
-//ID field validation
-        String repID= idField.getText();
-    //ignore any non-number input
-        repID= repID.replaceAll("[^\\d.]", "");
-        
-    //validate user input
-        if(repID.trim().length()==0){
-                idERROR.setVisible(true);
-                idERROR.setText("You must provide an ID as INTEGER.");
-                IDinfoProvided = false;
-        }else{
-    //add to object
-            s.setIdNumber(repID.trim());
-            
-            idERROR.setVisible(false);
-            IDinfoProvided=true;
-             }
-       
-    //basic input - First Name Verification
-        String firstName=firstNameField.getText();
-    //ignore any number input
-        firstName = firstName.replaceAll("\\d","");
-        
-        if (firstName.trim().length()==0){
-            firstNameERROR.setVisible(true);
-            firstNameERROR.setText("You must provide a first name. Numbers are ignored!");
-            FNinfoProvided = false;
-        }else{
-            firstNameERROR.setVisible(false);
-    //added to object
-            s.setSalesRepFirstName(firstName.trim());
-            
-            FNinfoProvided = true;
-        }        
-        
-//basic input - Last Name verification
-        String lastName=lastNameField.getText();
-    //ignore any numbers input
-        lastName= lastName.replaceAll("\\d","");
-        
-        if (lastName.trim().length()==0 || lastName.equals(firstName)){
-            lastNameERROR.setVisible(true);
-            lastNameERROR.setText("You must provide a different last name! Numbers are ignored!");
-            LNinfoProvided = false;
-        }else {
-            
-            lastNameERROR.setVisible(false);
-    //assigned to salesRep object
-            s.setSalesRepLastName(lastName.trim());
-            LNinfoProvided = true;
-        }
-         
-         
-//################## Total Sold##########################
-//basic input - Office Supplies
-    String officeTotal= officeSuppliesTextField.getText();
+    //ID field validation
+            String repID= idField.getText();
+        //ignore any non-number input
+            repID= repID.replaceAll("[^\\d.]", "");
 
-        if(officeTotal.trim().length()==0){
+        //validate user input
+            if(repID.trim().length()==0){
+                    idERROR.setVisible(true);
+                    idERROR.setText("You must provide an ID as INTEGER.");
+                    IDinfoProvided = false;
+                    enterConfirmLabel.setVisible(false);
+            }else{
+        //add to object
+                s.setIdNumber(repID.trim());
+
+                idERROR.setVisible(false);
+                IDinfoProvided=true;
+                 }
+
+        //basic input - First Name Verification
+            String firstName=firstNameField.getText();
+        //ignore any number input
+            firstName = firstName.replaceAll("\\d","");
+
+            if (firstName.trim().length()==0){
+                firstNameERROR.setVisible(true);
+                enterConfirmLabel.setVisible(false);
+                firstNameERROR.setText("You must provide a first name. Numbers are ignored!");
+                FNinfoProvided = false;
+            }else{
+                firstNameERROR.setVisible(false);
+        //added to object
+                s.setSalesRepFirstName(firstName.trim());
+
+                FNinfoProvided = true;
+            }        
+
+    //basic input - Last Name verification
+            String lastName=lastNameField.getText();
+        //ignore any numbers input
+            lastName= lastName.replaceAll("\\d","");
+
+            if (lastName.trim().length()==0 || lastName.equals(firstName)){
+                lastNameERROR.setVisible(true);
+                enterConfirmLabel.setVisible(false);
+                lastNameERROR.setText("You must provide a different last name! Numbers are ignored!");
+                LNinfoProvided = false;
+            }else {
+
+                lastNameERROR.setVisible(false);
+        //assigned to salesRep object
+                s.setSalesRepLastName(lastName.trim());
+                LNinfoProvided = true;
+            }
+
+
+    //################## Total Sold##########################
+    //basic input - Office Supplies
+        String officeTotal= officeSuppliesTextField.getText();
+
+            if(officeTotal.trim().length()==0){
+                    officeSuppliesERROR.setVisible(true);
+                    enterConfirmLabel.setVisible(false);
+                    officeSuppliesERROR.setText("Please provide the amount of OS sold in a decimal");
+                    OSinfoProvided = false;
+            }else{
+                officeSuppliesERROR.setVisible(false);
+                OSinfoProvided=true;
+            //set to object
+            s.setOfficeSupplies(officeTotal.trim());
+                 }
+            //Validate int datatype
+            try{
+                double id = Double.parseDouble(officeTotal);
+                s.setOfficeSupplies(officeTotal.trim());
+            }catch(NumberFormatException e){
                 officeSuppliesERROR.setVisible(true);
+                enterConfirmLabel.setVisible(false);
                 officeSuppliesERROR.setText("Please provide the amount of OS sold in a decimal");
                 OSinfoProvided = false;
-        }else{
-            officeSuppliesERROR.setVisible(false);
-            OSinfoProvided=true;
-        //set to object
-        s.setOfficeSupplies(officeTotal.trim());
-             }
-        //Validate int datatype
-        try{
-            double id = Double.parseDouble(officeTotal);
-            s.setOfficeSupplies(officeTotal.trim());
-        }catch(NumberFormatException e){
-            officeSuppliesERROR.setVisible(true);
-            officeSuppliesERROR.setText("Please provide the amount of OS sold in a decimal");
-            OSinfoProvided = false;
-        }
-//basic input - Books
-    String booksTotal= booksTextField.getText();
+            }
+    //basic input - Books
+        String booksTotal= booksTextField.getText();
 
-        if(booksTotal.trim().length()==0){
+            if(booksTotal.trim().length()==0){
+                    booksERROR.setVisible(true);
+                    enterConfirmLabel.setVisible(false);
+                    booksERROR.setText("Please provide the amount of books sold in a decimal");
+                    BinfoProvided = false;
+            }else{
+                s.setBooks(booksTotal.trim());
+                booksERROR.setVisible(false);
+                BinfoProvided=true;
+                 }
+            //Validate int datatype
+            try{
+                double id = Double.parseDouble(booksTotal);
+                s.setBooks(booksTotal.trim());
+            }catch(NumberFormatException e){
                 booksERROR.setVisible(true);
+                enterConfirmLabel.setVisible(false);
                 booksERROR.setText("Please provide the amount of books sold in a decimal");
                 BinfoProvided = false;
-        }else{
-            s.setBooks(booksTotal.trim());
-            booksERROR.setVisible(false);
-            BinfoProvided=true;
-             }
-        //Validate int datatype
-        try{
-            double id = Double.parseDouble(booksTotal);
-            s.setBooks(booksTotal.trim());
-        }catch(NumberFormatException e){
-            booksERROR.setVisible(true);
-            booksERROR.setText("Please provide the amount of books sold in a decimal");
-            BinfoProvided = false;
-        }
-//basic input - Paper
-    String paperTotal= paperTextField.getText();
-        //validate input of data
-        if(paperTotal.trim().length()==0){
+            }
+    //basic input - Paper
+        String paperTotal= paperTextField.getText();
+            //validate input of data
+            if(paperTotal.trim().length()==0){
+                    paperERROR.setVisible(true);
+                    enterConfirmLabel.setVisible(false);
+                    paperERROR.setText("Please provide the amount of paper sold in a decimal");
+                    PinfoProvided = false;
+            }else{
+                s.setPaper(paperTotal.trim());
+                paperERROR.setVisible(false);
+                PinfoProvided=true;
+                 }
+
+            try{//Validate int datatype
+                double id = Double.parseDouble(paperTotal);
+                 s.setPaper(paperTotal.trim());
+            }catch(NumberFormatException e){
                 paperERROR.setVisible(true);
+                enterConfirmLabel.setVisible(false);
                 paperERROR.setText("Please provide the amount of paper sold in a decimal");
                 PinfoProvided = false;
-        }else{
-            s.setPaper(paperTotal.trim());
-            paperERROR.setVisible(false);
-            PinfoProvided=true;
-             }
-            
-        try{//Validate int datatype
-            double id = Double.parseDouble(paperTotal);
-             s.setPaper(paperTotal.trim());
-        }catch(NumberFormatException e){
-            paperERROR.setVisible(true);
-            paperERROR.setText("Please provide the amount of paper sold in a decimal");
-            PinfoProvided = false;
-        }
-        
-       
-        
-// ##############RADIO BUTTONS######################
-    String districtSelect = new String();
-     
-        if (northRadioButton.isSelected())
-        {   districtSelect= "NORTH";
-            districtSelect.toString();
-            districtERROR.setVisible(false);
-            s.setDistrictSelect(districtSelect);
-            DinfoProvided=true;
-    //if North is selected
-        }else if (eastRadioButton.isSelected()){
-            districtSelect= "EAST";
-            districtSelect.toString();
-            s.setDistrictSelect(districtSelect);
-            districtERROR.setVisible(false);
-            
-            DinfoProvided=true;
-    //if South is selected
-        }else if(southRadioButton.isSelected()){
-            districtSelect= "SOUTH";
-            districtSelect.toString();
-            s.setDistrictSelect(districtSelect);
-            districtERROR.setVisible(false);
-            
-            DinfoProvided=true;
-    //if west is selected
-        }else if(westRadioButton.isSelected()){
-            districtSelect= "WEST";
-            districtSelect.toString();
-            s.setDistrictSelect(districtSelect);
-            districtERROR.setVisible(false);
-            
-            DinfoProvided=true;
-    //if no region is selected    
-        }else{   
-        districtERROR.setVisible(true);
-        districtERROR.setText("Please choose a district!");   
-        DinfoProvided = false;
-        }
-//###################Contact Select#######################
-        String contactSelect = new String();
-    //if Phone is selected
-        if (phoneRadioButton.isSelected())
-        {   contactSelect= "Phone";
-            contactSelect.toString();
-            s.setContactSelect(contactSelect);
-            contactERROR.setVisible(false);
-            CinfoProvided=true;
-//if email is selected  
-        }else if (emailRadioButton.isSelected()){
-            contactSelect= "Email";
-            contactSelect.toString();
-            s.setContactSelect(contactSelect);
-            contactERROR.setVisible(false);
-            CinfoProvided=true;
-//if a Visit is chosen
-        }else if(visitRadioButton.isSelected()){
-            contactSelect= "Visit";
-            contactSelect.toString();
-            s.setContactSelect(contactSelect);
-            contactERROR.setVisible(false);
-            CinfoProvided=true;
-        
-        //if no region is selected    
-        }else{   
-        contactERROR.setVisible(true);
-        contactERROR.setText("Please choose Contact Preference!"); 
-        CinfoProvided = false;
-        } 
-//verify completion of all fields
-        if (IDinfoProvided && FNinfoProvided && LNinfoProvided &&
-            OSinfoProvided && BinfoProvided && PinfoProvided && 
-            DinfoProvided && CinfoProvided)
-        {
-        
-            try {
-                salesRepFileWriter RFW = new salesRepFileWriter();
-                RFW.writeRep(s);
-                idField.setText("");
-                firstNameField.setText("");
-                lastNameField.setText("");
-                officeSuppliesTextField.setText("");
-                booksTextField.setText("");
-                paperTextField.setText("");
-                contactButtonGroup.clearSelection();
-                districtButtonGroup.clearSelection();
-                } catch (IOException ex){
-                    JOptionPane.showMessageDialog(this, "File Error");
-                    Logger.getLogger(MainGUI.class.getName()).log(Level.SEVERE, null, ex);
             }
-         
+
+
+
+    // ##############RADIO BUTTONS######################
+        String districtSelect = new String();
+
+            if (northRadioButton.isSelected())
+            {   districtSelect= "NORTH";
+                districtSelect.toString();
+                districtERROR.setVisible(false);
+                s.setDistrictSelect(districtSelect);
+                DinfoProvided=true;
+        //if North is selected
+            }else if (eastRadioButton.isSelected()){
+                districtSelect= "EAST";
+                districtSelect.toString();
+                s.setDistrictSelect(districtSelect);
+                districtERROR.setVisible(false);
+
+                DinfoProvided=true;
+        //if South is selected
+            }else if(southRadioButton.isSelected()){
+                districtSelect= "SOUTH";
+                districtSelect.toString();
+                s.setDistrictSelect(districtSelect);
+                districtERROR.setVisible(false);
+
+                DinfoProvided=true;
+        //if west is selected
+            }else if(westRadioButton.isSelected()){
+                districtSelect= "WEST";
+                districtSelect.toString();
+                s.setDistrictSelect(districtSelect);
+                districtERROR.setVisible(false);
+
+                DinfoProvided=true;
+        //if no region is selected    
+            }else{   
+            districtERROR.setVisible(true);
+            enterConfirmLabel.setVisible(false);
+            districtERROR.setText("Please choose a district!");   
+            DinfoProvided = false;
+            }
+    //###################Contact Select#######################
+            String contactSelect = new String();
+        //if Phone is selected
+            if (phoneRadioButton.isSelected())
+            {   contactSelect= "Phone";
+                contactSelect.toString();
+                s.setContactSelect(contactSelect);
+                contactERROR.setVisible(false);
+                CinfoProvided=true;
+    //if email is selected  
+            }else if (emailRadioButton.isSelected()){
+                contactSelect= "Email";
+                contactSelect.toString();
+                s.setContactSelect(contactSelect);
+                contactERROR.setVisible(false);
+                CinfoProvided=true;
+    //if a Visit is chosen
+            }else if(visitRadioButton.isSelected()){
+                contactSelect= "Visit";
+                contactSelect.toString();
+                s.setContactSelect(contactSelect);
+                contactERROR.setVisible(false);
+                CinfoProvided=true;
+
+            //if no region is selected    
+            }else{   
+            contactERROR.setVisible(true);
+            enterConfirmLabel.setVisible(false);
+            contactERROR.setText("Please choose Contact Preference!"); 
+            CinfoProvided = false;
+            } 
+    //verify completion of all fields
+            if (IDinfoProvided && FNinfoProvided && LNinfoProvided &&
+                OSinfoProvided && BinfoProvided && PinfoProvided && 
+                DinfoProvided && CinfoProvided)
+            {
+
+                try { //write user input to Sales_Reps.txt
+                    salesRepFileWriter RFW = new salesRepFileWriter();
+                    RFW.writeRep(s);
+                    enterConfirmLabel.setVisible(true);
+                //resets fields for new input
+                    idField.setText("");
+                    firstNameField.setText("");
+                    lastNameField.setText("");
+                    officeSuppliesTextField.setText("");
+                    booksTextField.setText("");
+                    paperTextField.setText("");
+                    districtButtonGroup.clearSelection();
+                    contactButtonGroup.clearSelection();
+
+                    } catch (IOException ex){
+                        JOptionPane.showMessageDialog(this, "File Error");
+                        Logger.getLogger(MainGUI.class.getName()).log(Level.SEVERE, null, ex);
+                }
+
         } 
     }//GEN-LAST:event_enterButtonActionPerformed
 
@@ -623,6 +701,7 @@ public class MainGUI extends javax.swing.JFrame {
     private javax.swing.JRadioButton eastRadioButton;
     private javax.swing.JRadioButton emailRadioButton;
     private javax.swing.JButton enterButton;
+    private javax.swing.JLabel enterConfirmLabel;
     private javax.swing.JButton exitButton;
     private javax.swing.JLabel firstNameERROR;
     private javax.swing.JTextField firstNameField;
@@ -631,6 +710,7 @@ public class MainGUI extends javax.swing.JFrame {
     private javax.swing.JTextField idField;
     private javax.swing.JLabel idLabel;
     private javax.swing.JRadioButton jRadioButton1;
+    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator2;
     private javax.swing.JSeparator jSeparator3;
@@ -646,6 +726,8 @@ public class MainGUI extends javax.swing.JFrame {
     private javax.swing.JTextField paperTextField;
     private javax.swing.JRadioButton phoneRadioButton;
     private javax.swing.JLabel salesRepLabel;
+    private javax.swing.JTextArea salesRepOutput;
+    private javax.swing.JButton showButton;
     private javax.swing.JRadioButton southRadioButton;
     private javax.swing.JLabel totalSoldLabel;
     private javax.swing.JRadioButton visitRadioButton;

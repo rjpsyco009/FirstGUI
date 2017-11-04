@@ -6,9 +6,10 @@ package ProjectGUI;
  *salesRep class
  */
 public class salesRep {
+
+    private String idNumber;
     private String salesRepFirstName;
     private String salesRepLastName;
-    private String idNumber;
     private String officeSupplies;
     private String books;
     private String paper;
@@ -89,6 +90,15 @@ public class salesRep {
     public void setContactSelect(String contactSelect) {
         this.contactSelect = contactSelect;
     }
+
+    @Override
+    public String toString() {
+        return "salesRep{" + " idNumber=" + idNumber + " firstName="+ salesRepFirstName +" salesRepLastName=" + salesRepLastName +" officeSupplies=" + officeSupplies + " books=" + books + " paper=" + paper + " districtSelect=" + districtSelect + " contactSelect=" + contactSelect + '}';
+    }
+
+
+
+   
 
 
 }

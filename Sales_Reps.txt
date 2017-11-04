@@ -1,3 +1,4 @@
-45 jacob hale SUPPLIES 6 BOOKS 2 PAPER 25 SOUTH Email
-4 raun lkj SUPPLIES 4 BOOKS 2 PAPER 2 NORTH Phone
-4 red skelton SUPPLIES 6 BOOKS 7 PAPER 8 SOUTH Visit
+4, ryan, norton, 55, 66, 88, NORTH, Phone
+4, ryan, norton, 9, 1, 8, NORTH, Phone
+1, Emmy, Norton, 4, 7, 8, EAST, Email
+2, jeff, cranor, 8, 8, 8, SOUTH, Phone
