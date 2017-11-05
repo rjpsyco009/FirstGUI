@@ -93,7 +93,16 @@ public class salesRep {
 
     @Override
     public String toString() {
-        return "salesRep{" + " idNumber=" + idNumber + " firstName="+ salesRepFirstName +" salesRepLastName=" + salesRepLastName +" officeSupplies=" + officeSupplies + " books=" + books + " paper=" + paper + " districtSelect=" + districtSelect + " contactSelect=" + contactSelect + '}';
+        return "SALES REP{ " +idNumber 
+                +"\n "+ salesRepFirstName
+                +"\n "+ salesRepLastName 
+                +"\n "+ officeSupplies 
+                +"\n "+ books 
+                +"\n "+ paper  
+                +"\n "+ totalSold
+                +"\n "+ districtSelect 
+               +"\n "+ contactSelect +'}'
+                +"\n------------------------";
     }
 
 

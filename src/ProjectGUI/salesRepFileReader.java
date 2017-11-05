@@ -76,7 +76,7 @@ public class salesRepFileReader {
         officeSupplies  = st.nextToken().trim();
         books           = st.nextToken().trim();
         paper           = st.nextToken().trim();
-        //totalSold       = st.nextToken().trim();
+        totalSold       = st.nextToken().trim();
         districtSelect  = st.nextToken().trim();
         contactSelect   = st.nextToken().trim();
         if (idNumber.length() == 0)
@@ -103,10 +103,10 @@ public class salesRepFileReader {
         {
             return null;
         }
-        /*if (totalSold.length() == 0)
+        if (totalSold.length() == 0)
         {
             return null;
-        }*/
+        }
         if (districtSelect.length() == 0)
         {
             return null;
@@ -124,7 +124,7 @@ public class salesRepFileReader {
         s.setOfficeSupplies(officeSupplies);
         s.setBooks(books);
         s.setPaper(paper);
-        //s.setTotalSold(totalSold);
+        s.setTotalSold(totalSold);
         s.setDistrictSelect(districtSelect);
         s.setContactSelect(contactSelect);
         return s;

@@ -86,6 +86,7 @@ public class MainGUI extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         salesRepOutput = new javax.swing.JTextArea();
         showButton = new javax.swing.JButton();
+        evaluateButton = new javax.swing.JButton();
 
         jRadioButton1.setText("jRadioButton1");
 
@@ -198,92 +199,96 @@ public class MainGUI extends javax.swing.JFrame {
             }
         });
 
+        evaluateButton.setText("Evaluate");
+        evaluateButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                evaluateButtonActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(12, 12, 12)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(officeSuppliesLabel, javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(paperLabel, javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(booksLabel, javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(salesRepLabel, javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(idLabel, javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(firstNameLabel, javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(lastNameLabel, javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(totalSoldLabel, javax.swing.GroupLayout.Alignment.TRAILING))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(booksTextField, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(paperTextField, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(officeSuppliesTextField, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(idField, javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(firstNameField, javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(lastNameField, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(idERROR)
-                    .addComponent(firstNameERROR)
-                    .addComponent(lastNameERROR)
-                    .addComponent(officeSuppliesERROR)
-                    .addComponent(booksERROR)
-                    .addComponent(paperERROR))
-                .addGap(0, 0, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jSeparator2)
-                .addContainerGap())
-            .addGroup(layout.createSequentialGroup()
-                .addGap(12, 12, 12)
-                .addComponent(jSeparator3)
-                .addContainerGap())
-            .addGroup(layout.createSequentialGroup()
+                .addGap(86, 86, 86)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 547, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(63, 63, 63)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(contactPreferenceLabel)
+                                .addGroup(layout.createSequentialGroup()
+                                    .addComponent(phoneRadioButton)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                    .addComponent(emailRadioButton)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                    .addComponent(visitRadioButton)))
+                            .addComponent(contactERROR))
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(DistrictLabel)
+                            .addGroup(layout.createSequentialGroup()
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(exitButton)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(enterButton)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(enterConfirmLabel))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(328, 328, 328)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(evaluateButton)
+                                    .addComponent(showButton))
+                                .addGap(0, 0, Short.MAX_VALUE))))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(northRadioButton)
-                                    .addComponent(eastRadioButton))
-                                .addGap(18, 18, 18)
+                                    .addComponent(officeSuppliesLabel, javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(paperLabel, javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(booksLabel, javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(salesRepLabel, javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(idLabel, javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(firstNameLabel, javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(lastNameLabel, javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(totalSoldLabel, javax.swing.GroupLayout.Alignment.TRAILING))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(westRadioButton)
+                                    .addComponent(booksTextField, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(paperTextField, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(officeSuppliesTextField, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(idField, javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(firstNameField, javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(lastNameField, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(idERROR)
+                                    .addComponent(firstNameERROR)
+                                    .addComponent(booksERROR)
+                                    .addComponent(paperERROR)
+                                    .addComponent(officeSuppliesERROR)
+                                    .addComponent(lastNameERROR)))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(51, 51, 51)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(layout.createSequentialGroup()
-                                        .addComponent(southRadioButton)
+                                        .addComponent(DistrictLabel)
+                                        .addGap(43, 43, 43)
+                                        .addComponent(districtERROR))
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(northRadioButton)
+                                            .addComponent(eastRadioButton))
                                         .addGap(18, 18, 18)
-                                        .addComponent(districtERROR)))))))
-                .addContainerGap(225, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(exitButton)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(enterConfirmLabel)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(enterButton)
-                        .addGap(65, 65, 65)
-                        .addComponent(showButton)))
-                .addGap(78, 78, 78))
-            .addGroup(layout.createSequentialGroup()
-                .addGap(68, 68, 68)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(emailRadioButton)
-                            .addComponent(visitRadioButton)
-                            .addComponent(phoneRadioButton))
-                        .addGap(18, 18, 18)
-                        .addComponent(contactERROR))
-                    .addComponent(contactPreferenceLabel))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane1)
-                .addGap(36, 36, 36))
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(southRadioButton)
+                                            .addComponent(westRadioButton)))))
+                            .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 547, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addComponent(jSeparator2, javax.swing.GroupLayout.DEFAULT_SIZE, 552, Short.MAX_VALUE)
+                                .addComponent(jSeparator3)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 270, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 41, Short.MAX_VALUE)))
+                .addContainerGap())
         );
 
         layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {firstNameField, idField, lastNameField});
@@ -292,88 +297,86 @@ public class MainGUI extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(salesRepLabel)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(idLabel)
-                    .addComponent(idField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(idERROR))
-                .addGap(8, 8, 8)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(firstNameLabel)
-                    .addComponent(firstNameField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(firstNameERROR))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(lastNameField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(lastNameERROR))
-                    .addComponent(lastNameLabel))
-                .addGap(18, 18, 18)
-                .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(totalSoldLabel)
-                .addGap(16, 16, 16)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(officeSuppliesLabel)
-                    .addComponent(officeSuppliesTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(officeSuppliesERROR))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(booksLabel)
-                    .addComponent(booksTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(booksERROR))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(paperLabel)
-                    .addComponent(paperTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(paperERROR))
-                .addGap(18, 18, 18)
-                .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 12, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(DistrictLabel)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(northRadioButton, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(eastRadioButton))
-                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(salesRepLabel)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(southRadioButton)
+                            .addComponent(idLabel)
+                            .addComponent(idField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(idERROR))
+                        .addGap(8, 8, 8)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(firstNameLabel)
+                            .addComponent(firstNameField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(firstNameERROR))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                .addComponent(lastNameField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(lastNameERROR))
+                            .addComponent(lastNameLabel))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(totalSoldLabel)
+                        .addGap(16, 16, 16)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(officeSuppliesLabel)
+                            .addComponent(officeSuppliesTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(officeSuppliesERROR))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(booksLabel)
+                            .addComponent(booksTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(booksERROR))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(paperLabel)
+                            .addComponent(paperTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(paperERROR))
+                        .addGap(18, 18, 18)
+                        .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 14, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(DistrictLabel)
                             .addComponent(districtERROR))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(westRadioButton)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jSeparator3, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(contactPreferenceLabel)
-                        .addGap(18, 18, 18)
-                        .addComponent(phoneRadioButton)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(emailRadioButton)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(visitRadioButton)
-                        .addGap(21, 21, 21))
-                    .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(contactERROR)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)))
-                        .addComponent(enterConfirmLabel)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)))
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(exitButton)
-                    .addComponent(enterButton)
-                    .addComponent(showButton))
-                .addGap(43, 43, 43))
+                                .addComponent(northRadioButton, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(eastRadioButton))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(southRadioButton)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(westRadioButton)))
+                        .addGap(18, 18, 18)
+                        .addComponent(jSeparator3, javax.swing.GroupLayout.PREFERRED_SIZE, 15, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 386, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(contactPreferenceLabel)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(phoneRadioButton)
+                            .addComponent(emailRadioButton)
+                            .addComponent(visitRadioButton)))
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(layout.createSequentialGroup()
+                            .addGap(62, 62, 62)
+                            .addComponent(contactERROR))
+                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                            .addComponent(evaluateButton)
+                            .addGap(2, 2, 2)
+                            .addComponent(showButton)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                .addComponent(exitButton)
+                                .addComponent(enterButton)
+                                .addComponent(enterConfirmLabel)))))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();
@@ -405,7 +408,19 @@ public class MainGUI extends javax.swing.JFrame {
         }
         
     }
-
+    
+    private void evaluateButtonActionPerformed(java.awt.event.ActionEvent evt){
+//        salesRepOutput.setText("");
+//            salesRepFileReader reader = new salesRepFileReader();
+//            try
+//            {
+//                List<salesRep> reps = reader.readReps("Sales_Reps.txt");
+//                bonusReps breps = new bonusReps;
+//                salesRepOutput.append(breps.findBonus(reps).toString();
+//            } catch (IOException ex){
+//                JOptionPane.showMessageDialog(this, "File ERROR");
+//            }
+    }
 //ENTER button actions
     private void enterButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_enterButtonActionPerformed
             boolean IDinfoProvided;
@@ -434,7 +449,7 @@ public class MainGUI extends javax.swing.JFrame {
             }else{
         //add to object
                 s.setIdNumber(repID.trim());
-
+                
                 idERROR.setVisible(false);
                 IDinfoProvided=true;
                  }
@@ -547,10 +562,11 @@ public class MainGUI extends javax.swing.JFrame {
                 paperERROR.setText("Please provide the amount of paper sold in a decimal");
                 PinfoProvided = false;
             }
+            
 
 
 
-    // ##############RADIO BUTTONS######################
+    //##############RADIO BUTTONS######################
         String districtSelect = new String();
 
             if (northRadioButton.isSelected())
@@ -590,6 +606,8 @@ public class MainGUI extends javax.swing.JFrame {
             districtERROR.setText("Please choose a district!");   
             DinfoProvided = false;
             }
+
+            
     //###################Contact Select#######################
             String contactSelect = new String();
         //if Phone is selected
@@ -621,17 +639,30 @@ public class MainGUI extends javax.swing.JFrame {
             contactERROR.setText("Please choose Contact Preference!"); 
             CinfoProvided = false;
             } 
+           
     //verify completion of all fields
             if (IDinfoProvided && FNinfoProvided && LNinfoProvided &&
                 OSinfoProvided && BinfoProvided && PinfoProvided && 
                 DinfoProvided && CinfoProvided)
             {
-
-                try { //write user input to Sales_Reps.txt
+        //##########totalSold######################
+            String totalSold;
+            int totalInt; int officeInt; int booksInt; int paperInt;
+            
+            officeInt = Integer.parseInt(officeTotal);
+            booksInt =Integer.parseInt(booksTotal);
+            paperInt = Integer.parseInt(paperTotal);
+            totalInt=officeInt + booksInt + paperInt;
+            
+            totalSold = Integer.toString(totalInt);
+            s.setTotalSold(totalSold);
+            
+        //write user input to Sales_Reps.txt
+                try { 
                     salesRepFileWriter RFW = new salesRepFileWriter();
                     RFW.writeRep(s);
                     enterConfirmLabel.setVisible(true);
-                //resets fields for new input
+                    
                     idField.setText("");
                     firstNameField.setText("");
                     lastNameField.setText("");
@@ -646,7 +677,16 @@ public class MainGUI extends javax.swing.JFrame {
                         Logger.getLogger(MainGUI.class.getName()).log(Level.SEVERE, null, ex);
                 }
 
-        } 
+        }else{ IDinfoProvided   =false; idERROR.setVisible(true);
+                FNinfoProvided  =false; firstNameERROR.setVisible(true);
+                LNinfoProvided  =false; lastNameERROR.setVisible(true);
+                OSinfoProvided  =false; officeSuppliesERROR.setVisible(true);
+                BinfoProvided   =false; booksERROR.setVisible(true);
+                PinfoProvided   =false; paperERROR.setVisible(true);
+                DinfoProvided   =false; districtERROR.setVisible(true);
+                CinfoProvided   =false; contactERROR.setVisible(true);
+                
+            } 
     }//GEN-LAST:event_enterButtonActionPerformed
 
     private void lastNameFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_lastNameFieldActionPerformed
@@ -702,6 +742,7 @@ public class MainGUI extends javax.swing.JFrame {
     private javax.swing.JRadioButton emailRadioButton;
     private javax.swing.JButton enterButton;
     private javax.swing.JLabel enterConfirmLabel;
+    private javax.swing.JButton evaluateButton;
     private javax.swing.JButton exitButton;
     private javax.swing.JLabel firstNameERROR;
     private javax.swing.JTextField firstNameField;

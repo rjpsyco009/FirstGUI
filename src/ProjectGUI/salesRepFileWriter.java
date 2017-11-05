@@ -14,22 +14,23 @@ public class salesRepFileWriter{
     public void writeRep(salesRep s) throws IOException{
         File testWriter = new File ("Sales_Reps.txt");
         try (BufferedWriter out = new BufferedWriter(new FileWriter(testWriter, true))) {
-            out.write( s.getIdNumber());
+            out.write( "ID:"+ s.getIdNumber());
             out.write(", ");
-            out.write(s.getSalesRepFirstName());
+            out.write(" FirstName:"+s.getSalesRepFirstName());
             out.write(", ");
-            out.write(s.getSalesRepLastName());
+            out.write(" LastName:"+s.getSalesRepLastName());
             out.write(", ");           
-            out.write( s.getOfficeSupplies());
+            out.write(" OfficeSupplies:"+ s.getOfficeSupplies());
             out.write(", ");
-            out.write( s.getBooks());
+            out.write(" Books:"+ s.getBooks());
             out.write(", ");            
-            out.write(s.getPaper());
-            
+            out.write(" Paper:"+s.getPaper());
             out.write(", ");
-            out.write(s.getDistrictSelect());
+            out.write(" Total:"+s.getTotalSold());
             out.write(", ");
-            out.write(s.getContactSelect());
+            out.write(" District:"+s.getDistrictSelect());
+            out.write(", ");
+            out.write(" Contact:"+s.getContactSelect());
             out.newLine();
             out.close();
         }        
