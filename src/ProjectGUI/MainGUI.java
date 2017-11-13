@@ -11,10 +11,17 @@ import javax.swing.JOptionPane;
 
 /**
  *Ryan Norton
- * Intermediate Java II - Unit 1 IP
- * Instructor Anthony Lowe
- * October 14, 2017
+ * Intermediate Java II
+ * Instructor - Anthony Lowe
+ * November 7, 2017
+ * 
+ * This project was made with guidance via the instructor over a 5 week
+ * period, but was written after watching an example, not simply copying code
+ * from the teacher
+ * 
+ * My first real Java project that I've put a lot of work into
  */
+
 public class MainGUI extends javax.swing.JFrame {
 
 //Creates form MainGUI
@@ -87,6 +94,7 @@ public class MainGUI extends javax.swing.JFrame {
         salesRepOutput = new javax.swing.JTextArea();
         showButton = new javax.swing.JButton();
         evaluateButton = new javax.swing.JButton();
+        starButton = new javax.swing.JButton();
 
         jRadioButton1.setText("jRadioButton1");
 
@@ -192,7 +200,12 @@ public class MainGUI extends javax.swing.JFrame {
         salesRepOutput.setRows(5);
         jScrollPane1.setViewportView(salesRepOutput);
 
-        showButton.setText("Show");
+        showButton.setText("Show Reps");
+        showButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                showButtonActionPerformed(evt);
+            }
+        });
         showButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 showButtonActionPerformed(evt);
@@ -203,6 +216,18 @@ public class MainGUI extends javax.swing.JFrame {
         evaluateButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 evaluateButtonActionPerformed(evt);
+            }
+        });
+        evaluateButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                evaluateButtonActionPerformed(evt);
+            }
+        });
+
+        starButton.setText("Show Stars");
+        starButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                starButtonActionPerformed(evt);
             }
         });
 
@@ -236,7 +261,10 @@ public class MainGUI extends javax.swing.JFrame {
                                 .addGap(328, 328, 328)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(evaluateButton)
-                                    .addComponent(showButton))
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(showButton)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(starButton)))
                                 .addGap(0, 0, Short.MAX_VALUE))))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -370,7 +398,9 @@ public class MainGUI extends javax.swing.JFrame {
                         .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                             .addComponent(evaluateButton)
                             .addGap(2, 2, 2)
-                            .addComponent(showButton)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                .addComponent(showButton)
+                                .addComponent(starButton))
                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                 .addComponent(exitButton)
@@ -389,38 +419,8 @@ public class MainGUI extends javax.swing.JFrame {
     private void exitButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_exitButtonActionPerformed
         System.exit(0);
     }//GEN-LAST:event_exitButtonActionPerformed
-//SHOW button action
-    private void showButtonActionPerformed(java.awt.event.ActionEvent evt){
-        salesRepOutput.setText("");
-        salesRepFileReader filereader = new salesRepFileReader();
-        try
-        {
-            List<salesRep> reps = filereader.readSalesRep("Sales_Reps.txt");
-            for (salesRep s : reps)
-            {
-                salesRepOutput.append(s.toString());
-                salesRepOutput.append("\n");
-            }
-        } catch (IOException ex)
-        {
-            JOptionPane.showMessageDialog(this, "Error in opening File");
-            Logger.getLogger(MainGUI.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        
-    }
+
     
-    private void evaluateButtonActionPerformed(java.awt.event.ActionEvent evt){
-//        salesRepOutput.setText("");
-//            salesRepFileReader reader = new salesRepFileReader();
-//            try
-//            {
-//                List<salesRep> reps = reader.readReps("Sales_Reps.txt");
-//                bonusReps breps = new bonusReps;
-//                salesRepOutput.append(breps.findBonus(reps).toString();
-//            } catch (IOException ex){
-//                JOptionPane.showMessageDialog(this, "File ERROR");
-//            }
-    }
 //ENTER button actions
     private void enterButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_enterButtonActionPerformed
             boolean IDinfoProvided;
@@ -432,6 +432,7 @@ public class MainGUI extends javax.swing.JFrame {
             boolean DinfoProvided;
             boolean CinfoProvided;
             
+    //create new salesRep object
             salesRep s = new salesRep();
     //##############Sales Rep######################
 
@@ -571,33 +572,30 @@ public class MainGUI extends javax.swing.JFrame {
 
             if (northRadioButton.isSelected())
             {   districtSelect= "NORTH";
-                districtSelect.toString();
-                districtERROR.setVisible(false);
+                
                 s.setDistrictSelect(districtSelect);
+                districtERROR.setVisible(false);
                 DinfoProvided=true;
         //if North is selected
             }else if (eastRadioButton.isSelected()){
                 districtSelect= "EAST";
-                districtSelect.toString();
+                
                 s.setDistrictSelect(districtSelect);
                 districtERROR.setVisible(false);
-
                 DinfoProvided=true;
         //if South is selected
             }else if(southRadioButton.isSelected()){
                 districtSelect= "SOUTH";
-                districtSelect.toString();
+                
                 s.setDistrictSelect(districtSelect);
                 districtERROR.setVisible(false);
-
                 DinfoProvided=true;
         //if west is selected
             }else if(westRadioButton.isSelected()){
                 districtSelect= "WEST";
-                districtSelect.toString();
+                
                 s.setDistrictSelect(districtSelect);
                 districtERROR.setVisible(false);
-
                 DinfoProvided=true;
         //if no region is selected    
             }else{   
@@ -613,22 +611,22 @@ public class MainGUI extends javax.swing.JFrame {
         //if Phone is selected
             if (phoneRadioButton.isSelected())
             {   contactSelect= "Phone";
-                contactSelect.toString();
                 s.setContactSelect(contactSelect);
+                
                 contactERROR.setVisible(false);
                 CinfoProvided=true;
     //if email is selected  
             }else if (emailRadioButton.isSelected()){
                 contactSelect= "Email";
-                contactSelect.toString();
                 s.setContactSelect(contactSelect);
+                
                 contactERROR.setVisible(false);
                 CinfoProvided=true;
     //if a Visit is chosen
             }else if(visitRadioButton.isSelected()){
                 contactSelect= "Visit";
-                contactSelect.toString();
                 s.setContactSelect(contactSelect);
+                
                 contactERROR.setVisible(false);
                 CinfoProvided=true;
 
@@ -645,17 +643,7 @@ public class MainGUI extends javax.swing.JFrame {
                 OSinfoProvided && BinfoProvided && PinfoProvided && 
                 DinfoProvided && CinfoProvided)
             {
-        //##########totalSold######################
-            String totalSold;
-            int totalInt; int officeInt; int booksInt; int paperInt;
-            
-            officeInt = Integer.parseInt(officeTotal);
-            booksInt =Integer.parseInt(booksTotal);
-            paperInt = Integer.parseInt(paperTotal);
-            totalInt=officeInt + booksInt + paperInt;
-            
-            totalSold = Integer.toString(totalInt);
-            s.setTotalSold(totalSold);
+
             
         //write user input to Sales_Reps.txt
                 try { 
@@ -677,22 +665,80 @@ public class MainGUI extends javax.swing.JFrame {
                         Logger.getLogger(MainGUI.class.getName()).log(Level.SEVERE, null, ex);
                 }
 
-        }else{ IDinfoProvided   =false; idERROR.setVisible(true);
-                FNinfoProvided  =false; firstNameERROR.setVisible(true);
-                LNinfoProvided  =false; lastNameERROR.setVisible(true);
-                OSinfoProvided  =false; officeSuppliesERROR.setVisible(true);
-                BinfoProvided   =false; booksERROR.setVisible(true);
-                PinfoProvided   =false; paperERROR.setVisible(true);
-                DinfoProvided   =false; districtERROR.setVisible(true);
-                CinfoProvided   =false; contactERROR.setVisible(true);
-                
-            } 
+        } 
     }//GEN-LAST:event_enterButtonActionPerformed
 
     private void lastNameFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_lastNameFieldActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_lastNameFieldActionPerformed
 
+    private void evaluateButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_evaluateButtonActionPerformed
+        //Hey, this is going to evaluate TWICE and put the record into Stars.txt TWICE.
+        //Was told this was an issue with the code added by netbeans. Fix it? Maybe.
+
+        salesRepOutput.setText("");
+            salesRepFileReader reader = new salesRepFileReader();
+        //Check for total item sold >=8000, and add those to Stars
+            try
+            {
+                List<salesRep> reps = reader.readSalesRep("Sales_Reps.txt");//read Sales Reps
+                bonusReps breps = new bonusReps();
+                List<salesRep> stars = breps.findBonus(reps);//find any +8,000 sellers
+                for (salesRep s : stars)
+                {
+                   JOptionPane.showMessageDialog(this, "Star records have been saved!");
+                     //write to the stars file
+                    starFileWriter SFW = new starFileWriter();
+                    SFW.writeStar(s);
+                    enterConfirmLabel.setVisible(true);
+                } 
+            } catch (IOException ex){
+                        JOptionPane.showMessageDialog(this, "File Error");
+                        Logger.getLogger(MainGUI.class.getName()).log(Level.SEVERE, null, ex);
+                }
+                
+          
+    }//GEN-LAST:event_evaluateButtonActionPerformed
+
+    private void showButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_showButtonActionPerformed
+       salesRepOutput.setText("");
+        salesRepFileReader filereader = new salesRepFileReader();
+        try
+        {
+            List<salesRep> reps = filereader.readSalesRep("Sales_Reps.txt");
+        //add each record to the file    
+            for (salesRep s : reps)
+            {
+                salesRepOutput.append(s.toString());
+                salesRepOutput.append("\n");
+            }
+        } catch (IOException ex)
+        {
+            JOptionPane.showMessageDialog(this, "Error in opening File");
+            Logger.getLogger(MainGUI.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+    }//GEN-LAST:event_showButtonActionPerformed
+
+    private void starButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_starButtonActionPerformed
+         salesRepOutput.setText("");
+        salesRepFileReader filereader = new salesRepFileReader();
+        try
+        {
+            List<salesRep> reps = filereader.readSalesRep("Stars.txt");
+        //add each record to the file    
+            for (salesRep s : reps)
+            {
+                salesRepOutput.append(s.toString());
+                salesRepOutput.append("\n");
+            }
+        } catch (IOException ex)
+        {
+            JOptionPane.showMessageDialog(this, "Error in opening File");
+            Logger.getLogger(MainGUI.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_starButtonActionPerformed
+    
     /**
      * @param args the command line arguments
      */
@@ -770,6 +816,7 @@ public class MainGUI extends javax.swing.JFrame {
     private javax.swing.JTextArea salesRepOutput;
     private javax.swing.JButton showButton;
     private javax.swing.JRadioButton southRadioButton;
+    private javax.swing.JButton starButton;
     private javax.swing.JLabel totalSoldLabel;
     private javax.swing.JRadioButton visitRadioButton;
     private javax.swing.JRadioButton westRadioButton;

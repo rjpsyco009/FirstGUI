@@ -2,9 +2,16 @@
 package ProjectGUI;
 
 /**
- *
- *salesRep class
+ *Ryan Norton
+ * Intermediate Java II - Unit 5 IP
+ * Instructor - Anthony Lowe
+ * November 7, 2017
+ * 
+ * 
  */
+
+//Sales  Representative Class
+
 public class salesRep {
 
     private String idNumber;
@@ -13,7 +20,6 @@ public class salesRep {
     private String officeSupplies;
     private String books;
     private String paper;
-    private String totalSold;
     private String districtSelect;
     private String contactSelect;
    
@@ -65,15 +71,6 @@ public class salesRep {
     public void setPaper(String paper) {
         this.paper = paper;
     }
-    
-    //Total Sold GetSet
-
-    public String getTotalSold() {
-        return totalSold;
-    }
-    public void setTotalSold(String totalSold) {
-        this.totalSold = totalSold;
-    }
         
     //District GetSet
     public String getDistrictSelect() {
@@ -93,15 +90,14 @@ public class salesRep {
 
     @Override
     public String toString() {
-        return "SALES REP{ " +idNumber 
-                +"\n "+ salesRepFirstName
-                +"\n "+ salesRepLastName 
-                +"\n "+ officeSupplies 
-                +"\n "+ books 
-                +"\n "+ paper  
-                +"\n "+ totalSold
-                +"\n "+ districtSelect 
-               +"\n "+ contactSelect +'}'
+        return "SALES REP{ ID=" +idNumber 
+                +"\nFIRSTNAME="+ salesRepFirstName
+                +"\nLASTNAME="+ salesRepLastName 
+                +"\n SUPPLIES="+ officeSupplies 
+                +"\n BOOKS="+ books 
+                +"\n PAPER="+ paper  
+                +"\n DISTRICT="+ districtSelect 
+               +"\n CONTACT="+ contactSelect +'}'
                 +"\n------------------------";
     }
 

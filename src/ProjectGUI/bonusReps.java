@@ -1,32 +1,41 @@
 
 package ProjectGUI;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
- *
- * @author ryanalena
+ *Ryan Norton
+ * Intermediate Java II - Unit 5 IP
+ * Instructor - Anthony Lowe
+ * November 7, 2017
+ * 
+ * 
  */
+
+
+//find any salesReps with a total sales of $8,000 or more
+    //add Office Supplies, books, and paper.
+        
 public class bonusReps {
-    public salesRep findBonus(List<salesRep> reps){
-        //find any entries with a total sales of $8,000 or more
-        //save them to Stars.txt for bonuses
-        //how, Tony? how? I know I need a loop, but my brain just can't do it.
-        //HALP
-        salesRep sales = null;
+    public List <salesRep> findBonus(List<salesRep> reps){
+        
+        List<salesRep> stars = new ArrayList();
         for (salesRep s: reps)
         {
-            if (sales == null)
+           int os=Integer.parseInt(s.getOfficeSupplies());
+           int books=Integer.parseInt(s.getBooks());
+           int paper =Integer.parseInt(s.getPaper());
+           
+           
+           int total = os+books+paper;
+           if (total >= 8000)
             {
-                sales = s;
-                continue;
+               stars.add(s);
+       
             }
-            int total = Integer.parseInt(s.getTotalSold());
-            if(total >= 8000){
-                System.out.println("huzzah!");
-                
-            } 
-            return total;
+        } 
+            return stars;
         }
         
 }

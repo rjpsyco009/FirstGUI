@@ -1,10 +1,15 @@
-
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
 package ProjectGUI;
 
 import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
+
 /**
  *Ryan Norton
  * Intermediate Java II - Unit 5 IP
@@ -14,12 +19,12 @@ import java.io.IOException;
  * 
  */
 
-//takes sales reps objects and writes to Sales_Rep.txt file
-//executed once enter Button is selected
+//Any bonusReps are written to Stars.txt
 
-public class salesRepFileWriter{
-    public void writeRep(salesRep s) throws IOException{
-        File testWriter = new File ("Sales_Reps.txt");
+public class starFileWriter {
+
+    public void writeStar(salesRep s) throws IOException{
+        File testWriter = new File ("Stars.txt");
         try (BufferedWriter out = new BufferedWriter(new FileWriter(testWriter, true))) {
             out.write(s.getIdNumber());
             out.write("|");
@@ -40,4 +45,5 @@ public class salesRepFileWriter{
             out.close();
         }        
     }
+
 }

@@ -10,12 +10,15 @@ import java.util.List;
 import java.util.StringTokenizer;
 
 /**
- * Ryan Norton
- * IntermediateJavaII - IP3
+ *Ryan Norton
+ * Intermediate Java II - Unit 5 IP
+ * Instructor - Anthony Lowe
+ * November 7, 2017
  * 
- * Reader Class
+ * 
  */
-/*This works well, but you will have a hard time reading this FILE for phase 3.  You should consider simplifying the output format so you can read it easier!*/
+
+//reads Sales_Reps.txt for SHOW button
 public class salesRepFileReader {
     
     public static void main(String args []) throws IOException{
@@ -56,7 +59,7 @@ public class salesRepFileReader {
         }
         return reps;
     }
-
+    //parse each line for its values
     private salesRep parseLine(String line) {
       
         String  idNumber;
@@ -65,18 +68,17 @@ public class salesRepFileReader {
         String  officeSupplies;
         String  books;
         String  paper;
-        String  totalSold;
         String  districtSelect;
         String  contactSelect;
         
-        StringTokenizer st = new StringTokenizer(line, ",");
+        //separates variables in file with tokenizer
+        StringTokenizer st = new StringTokenizer(line, "|");
         idNumber        = st.nextToken().trim();
         firstName       = st.nextToken().trim();
         lastName        = st.nextToken().trim();
         officeSupplies  = st.nextToken().trim();
         books           = st.nextToken().trim();
         paper           = st.nextToken().trim();
-        totalSold       = st.nextToken().trim();
         districtSelect  = st.nextToken().trim();
         contactSelect   = st.nextToken().trim();
         if (idNumber.length() == 0)
@@ -103,10 +105,6 @@ public class salesRepFileReader {
         {
             return null;
         }
-        if (totalSold.length() == 0)
-        {
-            return null;
-        }
         if (districtSelect.length() == 0)
         {
             return null;
@@ -115,7 +113,7 @@ public class salesRepFileReader {
         {
             return null;
         }
-        
+        //create readable salesRep object to be displayed in salesRepOutput
         salesRep s = new salesRep();
         
         s.setIdNumber(idNumber);
@@ -124,7 +122,6 @@ public class salesRepFileReader {
         s.setOfficeSupplies(officeSupplies);
         s.setBooks(books);
         s.setPaper(paper);
-        s.setTotalSold(totalSold);
         s.setDistrictSelect(districtSelect);
         s.setContactSelect(contactSelect);
         return s;

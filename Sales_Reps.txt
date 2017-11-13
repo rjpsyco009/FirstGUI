@@ -1,3 +1,3 @@
-ID:555,  FirstName:chirs,  LastName:eccleston,  OfficeSupplies:5,  Books:2,  Paper:3,  Total:10,  District:WEST,  Contact:Phone
-ID:4,  FirstName:bud,  LastName:dal,  OfficeSupplies:8,  Books:5,  Paper:2,  Total:15,  District:SOUTH,  Contact:Email
-ID:12,  FirstName:sherlock,  LastName:holmes,  OfficeSupplies:1,  Books:21,  Paper:448,  Total:470,  District:SOUTH,  Contact:Visit
+1|ryan|norton|5|2|9000|NORTH|Phone
+77|John Morgan|Dean|5000|60|3000|SOUTH|Email
+55|Mat|Kearny|5|2|6|EAST|Phone
